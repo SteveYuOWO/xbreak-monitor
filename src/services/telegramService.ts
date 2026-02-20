@@ -33,16 +33,16 @@ export class TelegramService {
   formatSignalMessage(signal: Signal): string {
     const isBull = signal.direction === 'BULL'
     const emoji = isBull ? '🟢' : '🔴'
-    const signalLabel = signal.type === 'CB' ? 'Candle Break (CB)' : 'Dominant Break (DB)'
+    const dirLabel = isBull ? '看多' : '看空'
+    const typeLabel = signal.type === 'CB' ? 'CB信号' : 'DB信号'
     const pair = formatInstrument(signal.instrument)
     const tf = formatTimeframe(signal.timeframe)
 
     const lines = [
-      `${emoji} <b>${signal.direction} ${signal.type} — ${pair}</b>`,
+      `${emoji} <b>${dirLabel} ${typeLabel} — ${pair}</b>`,
       '',
-      `💰 Price: <code>${formatPrice(signal.price)}</code>`,
-      `⏰ Timeframe: ${tf}`,
-      `🔎 Signal: ${signalLabel}`,
+      `💰 价格: <code>${formatPrice(signal.price)}</code>`,
+      `⏰ 周期: ${tf}`,
     ]
 
     return lines.join('\n')

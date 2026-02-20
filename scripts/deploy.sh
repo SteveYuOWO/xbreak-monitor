@@ -15,11 +15,11 @@ echo "==> Waiting for service to start..."
 sleep 10
 
 echo "==> Health check..."
-HEALTH=$(ssh "$SERVER" "curl -sf http://localhost:58431/health" 2>/dev/null)
+HEALTH=$(ssh "$SERVER" "curl -sf http://localhost/health" 2>/dev/null)
 
 if [ "$HEALTH" = "OK" ]; then
   echo "==> Deploy successful!"
-  echo "    App: http://64.227.171.212:58431 - healthy"
+  echo "    App: http://64.227.171.212 - healthy"
 else
   echo "==> Deploy may have issues!"
   echo "    Health response: $HEALTH"

@@ -5,7 +5,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "58431:58431"
+      - "80:80"
     environment:
       - TELEGRAM_BOT_TOKEN
       - TELEGRAM_CHAT_IDS

@@ -11,7 +11,7 @@ export const config = {
   },
 
   server: {
-    port: 58431,
+    port: 80,
     webhookSecret: process.env.WEBHOOK_SECRET || '',
   },
 } as const

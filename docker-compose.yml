@@ -10,5 +10,6 @@ services:
       - TELEGRAM_BOT_TOKEN
       - TELEGRAM_CHAT_IDS
       - WEBHOOK_SECRET
+      - DATABASE_URL
     command: sh -c "bun install && bun run src/index.ts"
     restart: unless-stopped

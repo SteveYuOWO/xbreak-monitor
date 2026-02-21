@@ -14,4 +14,8 @@ export const config = {
     port: 80,
     webhookSecret: process.env.WEBHOOK_SECRET || '',
   },
+
+  db: {
+    url: requireEnv('DATABASE_URL'),
+  },
 } as const

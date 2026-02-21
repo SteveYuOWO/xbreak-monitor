@@ -1,3 +1,4 @@
 TELEGRAM_BOT_TOKEN=op://API Keys/xbreak-monitor/TELEGRAM_BOT_TOKEN
 TELEGRAM_CHAT_IDS=op://API Keys/xbreak-monitor/TELEGRAM_CHAT_IDS
 WEBHOOK_SECRET=op://API Keys/xbreak-monitor/WEBHOOK_SECRET
+DATABASE_URL=op://API Keys/xbreak-monitor/DATABASE_URL

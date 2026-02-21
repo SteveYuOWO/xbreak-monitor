@@ -1,5 +1,6 @@
 import type { WebhookPayload, Signal, SignalType, SignalDirection } from '../types/index.ts'
 import { telegramService } from './telegramService.ts'
+import { db } from './db.ts'
 import { logger } from '../utils/logger.ts'
 
 function parseSignal(raw: string): { type: SignalType; direction: SignalDirection } | null {
@@ -44,6 +45,12 @@ export async function handleWebhook(body: unknown): Promise<void> {
   }
 
   logger.info(`[Webhook] Signal received: ${signal.instrument} ${signal.direction} ${signal.type} @ ${signal.price}`)
+
+  const isNew = await db.tryInsertSignal(signal)
+  if (!isNew) {
+    logger.info(`[Webhook] Duplicate suppressed: ${signal.instrument} ${signal.direction} ${signal.type}`)
+    return
+  }
 
   await telegramService.sendSignalAlert(signal)
 
